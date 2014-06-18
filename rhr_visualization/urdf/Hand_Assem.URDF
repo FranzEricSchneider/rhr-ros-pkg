@@ -1,0 +1,467 @@
+<robot
+  name="Hand_Assem">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-5.94499379767515E-07 0.00413446238542434 0.000131592809756376"
+        rpy="0 0 0" />
+      <mass
+        value="0.119487276057046" />
+      <inertia
+        ixx="8.85596786118175E-05"
+        ixy="3.17516300891029E-09"
+        ixz="-2.20936042493155E-10"
+        iyy="5.75221337379508E-05"
+        iyz="7.86631733355722E-07"
+        izz="0.000138119981949424" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="swivel1">
+    <inertial>
+      <origin
+        xyz="1.21430643318377E-17 0.0025 -6.93889390390723E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.000883572933822129" />
+      <inertia
+        ixx="1.42660213273365E-08"
+        ixy="-8.64127043520705E-26"
+        ixz="-4.13590306276514E-25"
+        iyy="2.48504887637474E-08"
+        iyz="-5.48986024840841E-25"
+        izz="1.42660213273365E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/swivel1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/swivel1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pre1_joint"
+    type="continuous">
+    <origin
+      xyz="0.03 0.05 0.01"
+      rpy="1.5707963267949 -1.69494838680934E-17 -0.280478227509652" />
+    <parent
+      link="base_link" />
+    <child
+      link="swivel1" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="proximal1">
+    <inertial>
+      <origin
+        xyz="-0.00352752693347735 0.00290988981195315 0.0256426021499178"
+        rpy="0 0 0" />
+      <mass
+        value="0.0148975087746268" />
+      <inertia
+        ixx="5.31012548767204E-06"
+        ixy="-3.45550357342132E-08"
+        ixz="-6.0889197355444E-07"
+        iyy="5.5547075605714E-06"
+        iyz="4.43597563773177E-07"
+        izz="9.0753208316769E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/proximal1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/proximal1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="prox1_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.00500000000000002 0"
+      rpy="-2.3571185793819 -1.11022302462516E-16 5.55111512312578E-17" />
+    <parent
+      link="swivel1" />
+    <child
+      link="proximal1" />
+    <axis
+      xyz="0.985087213479352 0.12154931079608 0.121774163452202" />
+  </joint>
+  <link
+    name="distal1">
+    <inertial>
+      <origin
+        xyz="0.00738402874375131 0.00225440630300303 0.0125136333109826"
+        rpy="0 0 0" />
+      <mass
+        value="0.00178113983946129" />
+      <inertia
+        ixx="1.55836545066438E-07"
+        ixy="1.25960415857285E-09"
+        ixz="1.28427112773454E-09"
+        iyy="1.60634657953424E-07"
+        iyz="1.41476643066665E-08"
+        izz="2.45252180680823E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/distal1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/distal1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="dist1_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0.06"
+      rpy="-0.622966572193815 0 -3.14159265358979" />
+    <parent
+      link="proximal1" />
+    <child
+      link="distal1" />
+    <axis
+      xyz="0.985087213479352 0.16976519196691 -0.0279814480669573" />
+  </joint>
+  <link
+    name="swivel2">
+    <inertial>
+      <origin
+        xyz="0 0.0025 -6.93889390390723E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.000883572933822129" />
+      <inertia
+        ixx="1.42660213273365E-08"
+        ixy="3.20151846105098E-41"
+        ixz="1.49352366668667E-56"
+        iyy="2.48504887637474E-08"
+        iyz="-7.63913390785988E-42"
+        izz="1.42660213273365E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/swivel2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/swivel2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pre2_joint"
+    type="continuous">
+    <origin
+      xyz="-0.03 0.05 0.01"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="swivel2" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="proximal2">
+    <inertial>
+      <origin
+        xyz="1.37984810142863E-06 0.00312573908182816 0.0258588886616745"
+        rpy="0 0 0" />
+      <mass
+        value="0.0148975217878698" />
+      <inertia
+        ixx="5.38969105151938E-06"
+        ixy="-7.694331112335E-11"
+        ixz="-8.25768270591644E-11"
+        iyy="5.55017419440215E-06"
+        iyz="4.83313430938826E-07"
+        izz="8.32523618336155E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/proximal2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/proximal2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="prox2_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.005 0"
+      rpy="0.426965839384772 0 3.14159265358979" />
+    <parent
+      link="swivel2" />
+    <child
+      link="proximal2" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="distal2">
+    <inertial>
+      <origin
+        xyz="3.26305220239853E-08 0.001622935252079 0.0126177303957976"
+        rpy="0 0 0" />
+      <mass
+        value="0.00178113764041426" />
+      <inertia
+        ixx="1.55655486828629E-07"
+        ixy="-2.75152606655742E-13"
+        ixz="-2.33493473893843E-12"
+        iyy="1.6085100841643E-07"
+        iyz="1.40557557989736E-08"
+        izz="2.4489016904531E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/distal2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/distal2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="dist2_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0.0600000000000002"
+      rpy="-0.375054915994839 0 3.14159265358979" />
+    <parent
+      link="proximal2" />
+    <child
+      link="distal2" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="proximal3">
+    <inertial>
+      <origin
+        xyz="1.37984918261376E-06 0.00312579481637378 0.0258589112713084"
+        rpy="0 0 0" />
+      <mass
+        value="0.0148975101146733" />
+      <inertia
+        ixx="5.38968041189396E-06"
+        ixy="-8.09190706844375E-11"
+        ixz="-8.41980905598702E-11"
+        iyy="5.55016815700339E-06"
+        iyz="4.83309754721751E-07"
+        izz="8.32518549181588E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/proximal3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/proximal3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="prox3_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.0499999999999999 0.0100000000000002"
+      rpy="-0.814167688836964 -1.46499718401691E-16 -3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="proximal3" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="distal3">
+    <inertial>
+      <origin
+        xyz="3.26306167291171E-08 0.00162295655945728 0.0126177356357311"
+        rpy="0 0 0" />
+      <mass
+        value="0.00178113247098447" />
+      <inertia
+        ixx="1.55655268166027E-07"
+        ixy="-2.86253978370765E-13"
+        ixz="-2.3262634178646E-12"
+        iyy="1.60850860255439E-07"
+        iyz="1.40555315117754E-08"
+        izz="2.4488894708622E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/distal3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Hand_Assem/meshes/distal3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="dist3_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0.0600000000000002"
+      rpy="-0.919760045737266 -1.19084230317202E-16 -3.14159265358979" />
+    <parent
+      link="proximal3" />
+    <child
+      link="distal3" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+</robot>

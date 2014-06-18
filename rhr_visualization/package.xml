@@ -1,0 +1,27 @@
+<package> 
+  <name>rhr_visualization</name>
+  <version>0.2.3</version>
+
+  <description>This package contains a number of URDF tutorials.</description>
+  <author>Eric Schneider</author>
+
+  <maintainer email="todo@todo.com">todo</maintainer>
+
+  <license>BSD</license>  
+  <url>http://ros.org/wiki/urdf_tutorial</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>urdf</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>message_generation</build_depend>
+
+  <run_depend>urdf</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>message_runtime</run_depend>
+
+</package>

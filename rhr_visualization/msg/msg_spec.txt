@@ -1,0 +1,17 @@
+Finger.msg
+	proximal joint 		# radians, measured from all open = 0, to pi = closed
+	distal joint 		# radians, measured from all open = 0, to roughly pi = against proximal pad, relative to prox link
+	tactile 			
+		contact			# binary, 0 = proximal, 9 = fingertip
+		pressure		# scalar, dimensionless units, 0 = proximal, 9 = fingertip (can go negative)
+
+Palm
+	preshape			# radians, 0 = powergrasp, pi/2 = pinch
+	tactile				# as above
+		contact
+		pressure
+
+Hand
+	Finger[3]
+	Palm
+
