@@ -10,12 +10,12 @@ def spoof_rhr_data():
 
     hand = Hand()
     counter = 0.0
-    rate_of_cycle = 100.0
+    rate_of_cycle = 80.0
 
     while not rospy.is_shutdown():
         sine = sin(counter/rate_of_cycle)
         fing_ang = (1.4*sine) + 1.4
-        pre_ang = ((pi/4)*sine)+pi/4
+        pre_ang = (-(pi/4)*sine)+pi/4
         if (sine > 0):
             contact = True
         else:

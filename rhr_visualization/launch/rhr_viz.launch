@@ -1,5 +1,5 @@
 <launch>
-	<param name="robot_description" textfile="$(find rhr_visualization)/urdf/Hand_Assem.URDF" />
+	<param name="robot_description" textfile="$(find rhr_visualization)/urdf/Reflex_Assem.URDF" />
 
 	<node name="spoof_rhr_data" pkg="rhr_visualization" type="spoof_rhr_data.py"/>
 	<node name="hand_visualizer" pkg="rhr_visualization" type="hand_visualizer"/>

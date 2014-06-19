@@ -1,0 +1,517 @@
+<robot
+  name="Reflex_Assem">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="3.0216E-05 -0.010622 -0.0169"
+        rpy="0 0 0" />
+      <mass
+        value="0.24584" />
+      <inertia
+        ixx="0.00046643"
+        ixy="3.914E-07"
+        ixz="-1.1388E-06"
+        iyy="0.00036883"
+        iyz="-3.3676E-05"
+        izz="0.00046818" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.376 0.376 0.376 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="swivel1">
+    <inertial>
+      <origin
+        xyz="0.00017449 0.0052831 0.0054101"
+        rpy="0 0 0" />
+      <mass
+        value="0.012217" />
+      <inertia
+        ixx="1.6714E-06"
+        ixy="1.5123E-08"
+        ixz="9.7662E-09"
+        iyy="2.2057E-06"
+        iyz="3.9094E-07"
+        izz="2.216E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/swivel1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.627 0.627 0.627 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/swivel1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pre1_joint"
+    type="continuous">
+    <origin
+      xyz="0.026 0.0303973683071413 0"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="swivel1" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="proximal1">
+    <inertial>
+      <origin
+        xyz="0.025736 -2.4942E-06 0.0030787"
+        rpy="0 0 0" />
+      <mass
+        value="0.016637" />
+      <inertia
+        ixx="9.6283E-07"
+        ixy="7.9204E-10"
+        ixz="3.8124E-07"
+        iyy="6.1965E-06"
+        iyz="4.093E-10"
+        izz="5.8217E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/proximal1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.377 0.377 0.377 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/proximal1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="prox1_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.0124 0.01"
+      rpy="-1.5707963267949 -1.5707963267949 0" />
+    <parent
+      link="swivel1" />
+    <child
+      link="proximal1" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="distal1">
+    <inertial>
+      <origin
+        xyz="0.028629 1.2689E-05 0.00026278"
+        rpy="0 0 0" />
+      <mass
+        value="0.0081318" />
+      <inertia
+        ixx="3.4817E-07"
+        ixy="1.2099E-09"
+        ixz="7.9367E-08"
+        iyy="1.1516E-06"
+        iyz="-3.8431E-11"
+        izz="1.0681E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/distal1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.628 0.628 0.628 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/distal1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="dist1_joint"
+    type="continuous">
+    <origin
+      xyz="0.068 0 0.00574999999999997"
+      rpy="0 0 0" />
+    <parent
+      link="proximal1" />
+    <child
+      link="distal1" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="swivel2">
+    <inertial>
+      <origin
+        xyz="0.00017449 0.0052831 0.0054101"
+        rpy="0 0 0" />
+      <mass
+        value="0.012217" />
+      <inertia
+        ixx="1.6714E-06"
+        ixy="1.5123E-08"
+        ixz="9.7662E-09"
+        iyy="2.2057E-06"
+        iyz="3.9094E-07"
+        izz="2.216E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/swivel2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.627 0.627 0.627 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/swivel2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pre2_joint"
+    type="continuous">
+    <origin
+      xyz="-0.026 0.0303973683071413 0"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="swivel2" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="proximal2">
+    <inertial>
+      <origin
+        xyz="0.025736 -2.4942E-06 0.0030787"
+        rpy="0 0 0" />
+      <mass
+        value="0.016637" />
+      <inertia
+        ixx="9.6283E-07"
+        ixy="7.9204E-10"
+        ixz="3.8124E-07"
+        iyy="6.1965E-06"
+        iyz="4.093E-10"
+        izz="5.8217E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/proximal2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.377 0.377 0.377 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/proximal2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="prox2_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.0124 0.01"
+      rpy="-1.5707963267949 -1.5707963267949 0" />
+    <parent
+      link="swivel2" />
+    <child
+      link="proximal2" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="distal2">
+    <inertial>
+      <origin
+        xyz="0.028629 1.2689E-05 0.00026278"
+        rpy="0 0 0" />
+      <mass
+        value="0.0081318" />
+      <inertia
+        ixx="3.4817E-07"
+        ixy="1.2099E-09"
+        ixz="7.9367E-08"
+        iyy="1.1516E-06"
+        iyz="-3.8431E-11"
+        izz="1.0681E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/distal2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.628 0.628 0.628 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/distal2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="dist2_joint"
+    type="continuous">
+    <origin
+      xyz="0.068 0 0.00574999999999996"
+      rpy="0 0 0" />
+    <parent
+      link="proximal2" />
+    <child
+      link="distal2" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="proximal3">
+    <inertial>
+      <origin
+        xyz="0.025736 -2.4942E-06 0.0030787"
+        rpy="0 0 0" />
+      <mass
+        value="0.016637" />
+      <inertia
+        ixx="9.6283E-07"
+        ixy="7.9204E-10"
+        ixz="3.8124E-07"
+        iyy="6.1965E-06"
+        iyz="4.093E-10"
+        izz="5.8217E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/proximal3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.377 0.377 0.377 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/proximal3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="prox3_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.05 0.0173"
+      rpy="-4.61601181103517E-17 -6.12303176911189E-17 -1.5707963267949" />
+    <parent
+      link="base_link" />
+    <child
+      link="proximal3" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="distal3">
+    <inertial>
+      <origin
+        xyz="0.028629 1.2689E-05 0.00026278"
+        rpy="0 0 0" />
+      <mass
+        value="0.0081318" />
+      <inertia
+        ixx="3.4817E-07"
+        ixy="1.2099E-09"
+        ixz="7.9367E-08"
+        iyy="1.1516E-06"
+        iyz="-3.8431E-11"
+        izz="1.0681E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/distal3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.628 0.628 0.628 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Reflex_Assem/meshes/distal3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="dist3_joint"
+    type="continuous">
+    <origin
+      xyz="0.068 0 0.00575000000000001"
+      rpy="-7.39557098644699E-32 -2.93074293484588E-48 6.34908023380609E-32" />
+    <parent
+      link="proximal3" />
+    <child
+      link="distal3" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+
+  <link name="prox1_tactile" />
+
+  <joint name="prox1_tactile_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="proximal1" />
+    <child link="prox1_tactile" />
+  </joint>
+
+  <joint name="prox2_tactile_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="proximal2" />
+    <child link="prox2_tactile" />
+  </joint>
+
+  <link name="prox2_tactile"/>
+
+  <joint name="prox3_tactile_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="proximal3" />
+    <child link="prox3_tactile" />
+  </joint>
+
+  <link name="prox3_tactile"/>
+
+  <joint name="dist1_tactile_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="distal1" />
+    <child link="dist1_tactile" />
+  </joint>
+
+  <link name="dist1_tactile"/>
+
+  <joint name="dist2_tactile_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="distal2" />
+    <child link="dist2_tactile" />
+  </joint>
+
+  <link name="dist2_tactile"/>
+
+  <joint name="dist3_tactile_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="distal3" />
+    <child link="dist3_tactile" />
+  </joint>
+
+  <link name="dist3_tactile"/>
+</robot>

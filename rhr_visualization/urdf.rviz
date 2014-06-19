@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /MarkerArray1
       Splitter Ratio: 0.5
     Tree Height: 601
   - Class: rviz/Selection
@@ -53,10 +54,6 @@ Visualization Manager:
       Collision Enabled: false
       Enabled: true
       Links:
-        /dist2_tactile:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
@@ -68,6 +65,10 @@ Visualization Manager:
           Show Trail: false
           Value: true
         dist1_tactile:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        dist2_tactile:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -152,8 +153,8 @@ Visualization Manager:
       Marker Topic: visualization_marker_array
       Name: MarkerArray
       Namespaces:
-        tactile_markers: true
-      Queue Size: 100
+        contact_markers: true
+      Queue Size: 1
       Value: true
   Enabled: true
   Global Options:
