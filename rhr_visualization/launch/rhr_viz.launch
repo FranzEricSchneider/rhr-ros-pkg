@@ -2,7 +2,8 @@
 	<param name="robot_description" textfile="$(find rhr_visualization)/urdf/Hand_Assem.URDF" />
 
 	<node name="spoof_rhr_data" pkg="rhr_visualization" type="spoof_rhr_data.py"/>
-	<node name="rhr_hand_visualizer" pkg="rhr_visualization" type="rhr_hand_visualizer"/>
+	<node name="hand_visualizer" pkg="rhr_visualization" type="hand_visualizer"/>
+	<node name="tactile_visualizer" pkg="rhr_visualization" type="tactile_visualizer"/>
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find rhr_visualization)/urdf.rviz" required="true" />
 </launch>

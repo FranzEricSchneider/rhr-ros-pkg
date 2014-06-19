@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   urdf
   message_generation
+  visualization_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -107,7 +108,8 @@ include_directories(
 
 ## Declare a cpp executable
 add_executable(rhr_publish_angles src/rhr_publish_angles.cpp)
-add_executable(rhr_hand_visualizer src/rhr_hand_visualizer.cpp)
+add_executable(hand_visualizer src/hand_visualizer.cpp)
+add_executable(tactile_visualizer src/tactile_visualizer.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
@@ -115,7 +117,8 @@ add_executable(rhr_hand_visualizer src/rhr_hand_visualizer.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(rhr_publish_angles ${catkin_LIBRARIES})
-target_link_libraries(rhr_hand_visualizer ${catkin_LIBRARIES})
+target_link_libraries(hand_visualizer ${catkin_LIBRARIES})
+target_link_libraries(tactile_visualizer ${catkin_LIBRARIES})
 
 
 #############

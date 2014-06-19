@@ -53,6 +53,10 @@ Visualization Manager:
       Collision Enabled: false
       Enabled: true
       Links:
+        /dist2_tactile:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
@@ -63,32 +67,62 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        dist1:
+        dist1_tactile:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        dist3_tactile:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        distal1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        dist2:
+        distal2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        dist3:
+        distal3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        prox1:
+        prox1_tactile:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        prox2_tactile:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        prox3_tactile:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        proximal1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        prox2:
+        proximal2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        prox3:
+        proximal3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swivel1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swivel2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -113,6 +147,14 @@ Visualization Manager:
         {}
       Update Interval: 0
       Value: false
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: visualization_marker_array
+      Name: MarkerArray
+      Namespaces:
+        tactile_markers: true
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
