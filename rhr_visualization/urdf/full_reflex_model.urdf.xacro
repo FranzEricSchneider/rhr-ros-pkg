@@ -1,0 +1,650 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rhr_flex_model">
+
+
+<!-- ################ ################ ################ ################ ################ ################ -->
+<!-- ################ XACRO PORTION OF THE URDF, FOR MAKING THE FLEXIBLE JOINTS ################ -->
+<!-- ################ ################ ################ ################ ################ ################ -->
+
+	<xacro:property name="flex_length" value="0.016" />
+	<xacro:property name="num_steps" value="9" />
+	<xacro:property name="prox_length" value="0.060" />
+	<xacro:property name="pi" value="3.1415" />
+
+ 	<xacro:macro name="base_color">
+ 		<color rgba="0.22 0.22 0.22 1"/>
+ 	</xacro:macro>
+
+ 	<xacro:macro name="swivel_color">
+ 		<color rgba="0.22 0.22 0.22 1"/>
+ 	</xacro:macro>
+
+ 	<xacro:macro name="prox_color">
+ 		<color rgba="0.35 0.35 0.35 1"/>
+ 	</xacro:macro>
+
+ 	 <xacro:macro name="dist_color">
+ 		<color rgba="0.35 0.35 0.35 1"/>
+ 	</xacro:macro>
+
+ 	<xacro:macro name="flex_color">
+ 		<color rgba="0.2 0.2 .2 1"/>
+ 	</xacro:macro>
+
+	<!-- Macro to make each park of the link -->
+	<xacro:macro name="flex_link" params="finger_id flex_id">
+		<link name="finger[${finger_id}]/flex_link[${flex_id}]">
+			<visual>
+				<geometry>
+					<box size="${flex_length/num_steps*1.25} 0.014 0.006"/>
+				</geometry>
+				<material name="dark gray">
+					<xacro:flex_color/>
+				</material>
+			</visual>
+		</link>
+	</xacro:macro>
+
+	<!-- Macro to one flex body link to the next -->
+	<xacro:macro name="flex_joint" params="finger_id link_parent link_child">
+		<joint name="finger[${finger_id}]/flex_joint_from_${link_parent}_to_${link_child}" type="continuous">
+			<parent link="finger[${finger_id}]/flex_link[${link_parent}]"/>
+			<child link="finger[${finger_id}]/flex_link[${link_child}]"/>
+			<origin xyz="${flex_length/num_steps} 0 0" />
+			<axis xyz="0 -1 0"/>
+		</joint>
+	</xacro:macro>
+
+	<!-- Macro to make the joint from proximal to first link and from last link to distal  -->
+	<xacro:macro name="flex_to_segment_joint" params="finger_id">
+		<joint name="finger[${finger_id}]/flex_joint_from_prox_to_1" type="continuous">
+			<parent link="proximal${finger_id}"/>
+			<child link="finger[${finger_id}]/flex_link[1]"/>
+			<origin xyz="${prox_length} 0 0.003"/>
+			<axis xyz="0 -1 0"/>
+		</joint>
+
+		<joint name="finger[${finger_id}]/flex_joint_from_${num_steps}_to_dist" type="continuous">
+			<parent link="finger[${finger_id}]/flex_link[${num_steps}]"/>
+			<child link="distal${finger_id}"/>
+			<origin xyz="${flex_length/num_steps-0.01} 0 0.003"/>
+			<axis xyz="0 -1 0"/>
+		</joint>
+	</xacro:macro>
+
+	<xacro:flex_link finger_id="1" flex_id="1"/>	<xacro:flex_link finger_id="1" flex_id="2"/>	<xacro:flex_link finger_id="1" flex_id="3"/>
+	<xacro:flex_link finger_id="1" flex_id="4"/>	<xacro:flex_link finger_id="1" flex_id="5"/>	<xacro:flex_link finger_id="1" flex_id="6"/>
+ 	<xacro:flex_link finger_id="1" flex_id="7"/>	<xacro:flex_link finger_id="1" flex_id="8"/>	<xacro:flex_link finger_id="1" flex_id="9"/>
+	<xacro:flex_joint finger_id="1" link_parent="1" link_child="2"/>	<xacro:flex_joint finger_id="1" link_parent="2" link_child="3"/>
+	<xacro:flex_joint finger_id="1" link_parent="3" link_child="4"/>	<xacro:flex_joint finger_id="1" link_parent="4" link_child="5"/>
+	<xacro:flex_joint finger_id="1" link_parent="5" link_child="6"/> 	<xacro:flex_joint finger_id="1" link_parent="6" link_child="7"/>
+	<xacro:flex_joint finger_id="1" link_parent="7" link_child="8"/>	<xacro:flex_joint finger_id="1" link_parent="8" link_child="9"/>
+ 	<xacro:flex_to_segment_joint finger_id="1"/>
+
+	<xacro:flex_link finger_id="2" flex_id="1"/>	<xacro:flex_link finger_id="2" flex_id="2"/>	<xacro:flex_link finger_id="2" flex_id="3"/>
+	<xacro:flex_link finger_id="2" flex_id="4"/>	<xacro:flex_link finger_id="2" flex_id="5"/>	<xacro:flex_link finger_id="2" flex_id="6"/>
+ 	<xacro:flex_link finger_id="2" flex_id="7"/>	<xacro:flex_link finger_id="2" flex_id="8"/>	<xacro:flex_link finger_id="2" flex_id="9"/>
+	<xacro:flex_joint finger_id="2" link_parent="1" link_child="2"/>	<xacro:flex_joint finger_id="2" link_parent="2" link_child="3"/>
+	<xacro:flex_joint finger_id="2" link_parent="3" link_child="4"/>	<xacro:flex_joint finger_id="2" link_parent="4" link_child="5"/>
+	<xacro:flex_joint finger_id="2" link_parent="5" link_child="6"/> 	<xacro:flex_joint finger_id="2" link_parent="6" link_child="7"/>
+	<xacro:flex_joint finger_id="2" link_parent="7" link_child="8"/>	<xacro:flex_joint finger_id="2" link_parent="8" link_child="9"/>
+ 	<xacro:flex_to_segment_joint finger_id="2"/>
+
+	<xacro:flex_link finger_id="3" flex_id="1"/>	<xacro:flex_link finger_id="3" flex_id="2"/>	<xacro:flex_link finger_id="3" flex_id="3"/>
+	<xacro:flex_link finger_id="3" flex_id="4"/>	<xacro:flex_link finger_id="3" flex_id="5"/>	<xacro:flex_link finger_id="3" flex_id="6"/>
+ 	<xacro:flex_link finger_id="3" flex_id="7"/>	<xacro:flex_link finger_id="3" flex_id="8"/>	<xacro:flex_link finger_id="3" flex_id="9"/>
+	<xacro:flex_joint finger_id="3" link_parent="1" link_child="2"/>	<xacro:flex_joint finger_id="3" link_parent="2" link_child="3"/>
+	<xacro:flex_joint finger_id="3" link_parent="3" link_child="4"/>	<xacro:flex_joint finger_id="3" link_parent="4" link_child="5"/>
+	<xacro:flex_joint finger_id="3" link_parent="5" link_child="6"/> 	<xacro:flex_joint finger_id="3" link_parent="6" link_child="7"/>
+	<xacro:flex_joint finger_id="3" link_parent="7" link_child="8"/>	<xacro:flex_joint finger_id="3" link_parent="8" link_child="9"/>
+ 	<xacro:flex_to_segment_joint finger_id="3"/>
+
+
+
+
+
+
+
+
+<!-- ################ ################ ################ ################ ################ ################ -->
+<!-- ################ THE SECTION CREATED BY SOLIDWORKS EXPORTER, CUT AND PASTE THIS IN HERE ################ -->
+<!-- ################ YOU CAN ALTER THE COLORS FROM HERE ################ -->
+<!-- ################ COMMENT OUT ALL dist*_joint PIECES OF THIS URDF SO THE FLEX JOINTS CAN LINK UP ################ -->
+<!-- ################ ################ ################ ################ ################ ################ -->
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="3.0216E-05 -0.010622 -0.0169"
+        rpy="0 0 0" />
+      <mass
+        value="0.24584" />
+      <inertia
+        ixx="0.00046643"
+        ixy="3.914E-07"
+        ixz="-1.1388E-06"
+        iyy="0.00036883"
+        iyz="-3.3676E-05"
+        izz="0.00046818" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        	<xacro:base_color/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="swivel1">
+    <inertial>
+      <origin
+        xyz="0.00017449 0.0052831 0.0054101"
+        rpy="0 0 0" />
+      <mass
+        value="0.012217" />
+      <inertia
+        ixx="1.6714E-06"
+        ixy="1.5123E-08"
+        ixz="9.7662E-09"
+        iyy="2.2057E-06"
+        iyz="3.9094E-07"
+        izz="2.216E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/swivel1.STL" />
+      </geometry>
+      <material
+        name="">
+        <xacro:swivel_color/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/swivel1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pre1_joint"
+    type="continuous">
+    <origin
+      xyz="0.026 0.0303973683071413 0"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="swivel1" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="proximal1">
+    <inertial>
+      <origin
+        xyz="0.025736 -2.4942E-06 0.0030787"
+        rpy="0 0 0" />
+      <mass
+        value="0.016637" />
+      <inertia
+        ixx="9.6283E-07"
+        ixy="7.9204E-10"
+        ixz="3.8124E-07"
+        iyy="6.1965E-06"
+        iyz="4.093E-10"
+        izz="5.8217E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/proximal1.STL" />
+      </geometry>
+      <material
+        name="">
+        <xacro:prox_color/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/proximal1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="prox1_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.0124 0.01"
+      rpy="-1.5707963267949 -1.5707963267949 0" />
+    <parent
+      link="swivel1" />
+    <child
+      link="proximal1" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="distal1">
+    <inertial>
+      <origin
+        xyz="0.028629 1.2689E-05 0.00026278"
+        rpy="0 0 0" />
+      <mass
+        value="0.0081318" />
+      <inertia
+        ixx="3.4817E-07"
+        ixy="1.2099E-09"
+        ixz="7.9367E-08"
+        iyy="1.1516E-06"
+        iyz="-3.8431E-11"
+        izz="1.0681E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/distal1.STL" />
+      </geometry>
+      <material
+        name="">
+        <xacro:dist_color/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/distal1.STL" />
+      </geometry>
+    </collision>
+  </link>
+<!--   <joint
+    name="dist1_joint"
+    type="continuous">
+    <origin
+      xyz="0.068 0 0.00574999999999997"
+      rpy="0 0 0" />
+    <parent
+      link="proximal1" />
+    <child
+      link="distal1" />
+    <axis
+      xyz="0 1 0" />
+  </joint> -->
+  <link
+    name="swivel2">
+    <inertial>
+      <origin
+        xyz="0.00017449 0.0052831 0.0054101"
+        rpy="0 0 0" />
+      <mass
+        value="0.012217" />
+      <inertia
+        ixx="1.6714E-06"
+        ixy="1.5123E-08"
+        ixz="9.7662E-09"
+        iyy="2.2057E-06"
+        iyz="3.9094E-07"
+        izz="2.216E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/swivel2.STL" />
+      </geometry>
+      <material
+        name="">
+        <xacro:swivel_color/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/swivel2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pre2_joint"
+    type="continuous">
+    <origin
+      xyz="-0.026 0.0303973683071413 0"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="swivel2" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="proximal2">
+    <inertial>
+      <origin
+        xyz="0.025736 -2.4942E-06 0.0030787"
+        rpy="0 0 0" />
+      <mass
+        value="0.016637" />
+      <inertia
+        ixx="9.6283E-07"
+        ixy="7.9204E-10"
+        ixz="3.8124E-07"
+        iyy="6.1965E-06"
+        iyz="4.093E-10"
+        izz="5.8217E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/proximal2.STL" />
+      </geometry>
+      <material
+        name="">
+        <xacro:prox_color/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/proximal2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="prox2_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.0124 0.01"
+      rpy="-1.5707963267949 -1.5707963267949 0" />
+    <parent
+      link="swivel2" />
+    <child
+      link="proximal2" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="distal2">
+    <inertial>
+      <origin
+        xyz="0.028629 1.2689E-05 0.00026278"
+        rpy="0 0 0" />
+      <mass
+        value="0.0081318" />
+      <inertia
+        ixx="3.4817E-07"
+        ixy="1.2099E-09"
+        ixz="7.9367E-08"
+        iyy="1.1516E-06"
+        iyz="-3.8431E-11"
+        izz="1.0681E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/distal2.STL" />
+      </geometry>
+      <material
+        name="">
+        <xacro:dist_color/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/distal2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- <joint
+    name="dist2_joint"
+    type="continuous">
+    <origin
+      xyz="0.068 0 0.00574999999999996"
+      rpy="0 0 0" />
+    <parent
+      link="proximal2" />
+    <child
+      link="distal2" />
+    <axis
+      xyz="0 1 0" />
+  </joint> -->
+  <link
+    name="proximal3">
+    <inertial>
+      <origin
+        xyz="0.025736 -2.4942E-06 0.0030787"
+        rpy="0 0 0" />
+      <mass
+        value="0.016637" />
+      <inertia
+        ixx="9.6283E-07"
+        ixy="7.9204E-10"
+        ixz="3.8124E-07"
+        iyy="6.1965E-06"
+        iyz="4.093E-10"
+        izz="5.8217E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/proximal3.STL" />
+      </geometry>
+      <material
+        name="">
+        <xacro:prox_color/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/proximal3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="prox3_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.05 0.0173"
+      rpy="-4.61601181103517E-17 -6.12303176911189E-17 -1.5707963267949" />
+    <parent
+      link="base_link" />
+    <child
+      link="proximal3" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="distal3">
+    <inertial>
+      <origin
+        xyz="0.028629 1.2689E-05 0.00026278"
+        rpy="0 0 0" />
+      <mass
+        value="0.0081318" />
+      <inertia
+        ixx="3.4817E-07"
+        ixy="1.2099E-09"
+        ixz="7.9367E-08"
+        iyy="1.1516E-06"
+        iyz="-3.8431E-11"
+        izz="1.0681E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/distal3.STL" />
+      </geometry>
+      <material
+        name="">
+        <xacro:dist_color/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rhr_visualization/meshes/distal3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- <joint
+    name="dist3_joint"
+    type="continuous">
+    <origin
+      xyz="0.068 0 0.00575000000000001"
+      rpy="-7.39557098644699E-32 -2.93074293484588E-48 6.34908023380609E-32" />
+    <parent
+      link="proximal3" />
+    <child
+      link="distal3" />
+    <axis
+      xyz="0 1 0" />
+  </joint> -->
+
+
+
+
+
+
+
+
+
+<!-- ################ ################ ################ ################ ################ ################ -->
+<!-- ################ THIS SECTION LINKS THE MARKERS (TACTILE DATA) TO THE CAD MESH ################ -->
+<!-- ################ COPY AND PASTE THIS FROM urdf/homemade_marker_portion_urdf  ################ -->
+<!-- ################ ################ ################ ################ ################ ################ -->
+
+  <joint name="base_tactile_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
+    <parent link="base_link" />
+    <child link="base_tactile" />
+  </joint>
+
+  <link name="base_tactile"/>
+
+  <link name="prox1_tactile" />
+
+  <joint name="prox1_tactile_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="proximal1" />
+    <child link="prox1_tactile" />
+  </joint>
+
+  <joint name="prox2_tactile_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="proximal2" />
+    <child link="prox2_tactile" />
+  </joint>
+
+  <link name="prox2_tactile"/>
+
+  <joint name="prox3_tactile_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="proximal3" />
+    <child link="prox3_tactile" />
+  </joint>
+
+  <link name="prox3_tactile"/>
+
+  <joint name="dist1_tactile_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="distal1" />
+    <child link="dist1_tactile" />
+  </joint>
+
+  <link name="dist1_tactile"/>
+
+  <joint name="dist2_tactile_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="distal2" />
+    <child link="dist2_tactile" />
+  </joint>
+
+  <link name="dist2_tactile"/>
+
+  <joint name="dist3_tactile_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="distal3" />
+    <child link="dist3_tactile" />
+  </joint>
+
+  <link name="dist3_tactile"/>
+
+
+
+
+
+
+
+
+
+
+</robot>

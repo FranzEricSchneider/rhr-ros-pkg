@@ -91,6 +91,96 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        finger[1]/flex_link[1]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[1]/flex_link[2]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[1]/flex_link[3]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[1]/flex_link[4]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[1]/flex_link[5]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[1]/flex_link[6]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[2]/flex_link[1]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[2]/flex_link[2]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[2]/flex_link[3]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[2]/flex_link[4]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[2]/flex_link[5]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[2]/flex_link[6]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[3]/flex_link[1]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[3]/flex_link[2]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[3]/flex_link[3]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[3]/flex_link[4]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[3]/flex_link[5]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[3]/flex_link[6]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         prox1_tactile:
           Alpha: 1
           Show Axes: false
@@ -154,6 +244,7 @@ Visualization Manager:
       Name: MarkerArray
       Namespaces:
         contact_markers: true
+        pressure_markers: true
       Queue Size: 1
       Value: true
   Enabled: true

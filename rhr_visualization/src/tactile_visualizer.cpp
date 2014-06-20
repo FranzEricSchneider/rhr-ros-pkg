@@ -5,14 +5,15 @@
 
 int main( int argc, char** argv );
 void publish_to_rviz(const rhr_visualization::HandConstPtr& hand);
-visualization_msgs::Marker makeContactMarker(float val, int id);
-visualization_msgs::Marker makePressureMarker(float val, int id);
-visualization_msgs::Marker makeMarker(int id);
+visualization_msgs::Marker makeContactMarker(float val, int id, float radius, float height, bool finger);
+visualization_msgs::Marker makePressureMarker(float val, int id, float radius, float height, bool finger);
+visualization_msgs::Marker makeFingerMarker(int id);
+visualization_msgs::Marker makePalmMarker(int id);
 void finger_tactile_positions(int index, double* x, double* z);
 
 ros::Publisher pub;
 const double contact_cutoff = 100;
-
+const int sensors_per_finger = 9;
 
 int main( int argc, char** argv )
 {
@@ -34,7 +35,7 @@ int main( int argc, char** argv )
  void publish_to_rviz(const rhr_visualization::HandConstPtr& hand)
  {
  	float pressure_val;
-	visualization_msgs::MarkerArray marker_array;
+ 	visualization_msgs::MarkerArray marker_array;
 
  	for (int finger=0; finger<3; finger++)
  	{
@@ -43,11 +44,11 @@ int main( int argc, char** argv )
  		char dist_fid[20];
  		sprintf(dist_fid, "/dist%d_tactile", (finger+1));
 
- 		for (int i=0; i<9; i++)
+ 		for (int i=0; i<sensors_per_finger; i++)		// Loop through tactile sensors in the fingers
  		{
  			pressure_val = hand->finger[finger].pressure[i];
- 			visualization_msgs::Marker contact_marker = makeContactMarker(pressure_val, i);
- 			visualization_msgs::Marker pressure_marker = makePressureMarker(pressure_val, i);
+ 			visualization_msgs::Marker contact_marker = makeContactMarker(pressure_val, i, 0.004, 0.005, true);
+ 			visualization_msgs::Marker pressure_marker = makePressureMarker(pressure_val, i, 0.008, 0.003, true);
  			if (i < 5) {		// Proximal link
  				contact_marker.header.frame_id = prox_fid;
  				pressure_marker.header.frame_id = prox_fid;
@@ -55,62 +56,76 @@ int main( int argc, char** argv )
  				contact_marker.header.frame_id = dist_fid;
  				pressure_marker.header.frame_id = dist_fid;
  			}
- 			contact_marker.id = i + (finger*9);
- 			pressure_marker.id = i + (finger*9);
+ 			contact_marker.id = i + (finger*sensors_per_finger);
+ 			pressure_marker.id = i + (finger*sensors_per_finger);
  			marker_array.markers.push_back(contact_marker);
  			marker_array.markers.push_back(pressure_marker);
  		}
  	}
- 	pub.publish(marker_array);	
-}
+
+ 	for (int i=0; i<12; i++)		// Loop through tactile sensors in the palm
+ 	{
+ 		visualization_msgs::Marker contact_marker = makeContactMarker(pressure_val, i, 0.004, 0.01, false);
+ 		visualization_msgs::Marker pressure_marker = makePressureMarker(pressure_val, i, 0.009, 0.008, false);
+ 		marker_array.markers.push_back(contact_marker);
+ 		marker_array.markers.push_back(pressure_marker);
+ 	}
+
+ 	pub.publish(marker_array);
+ }
 
 
-visualization_msgs::Marker makeContactMarker(float val, int id)
-{
-	visualization_msgs::Marker marker = makeMarker(id);
-	marker.ns = "contact_markers";
+ visualization_msgs::Marker makeContactMarker(float val, int id, float radius, float height, bool finger)
+ {
+ 	visualization_msgs::Marker marker;
+ 	if (finger)
+ 		marker = makeFingerMarker(id);
+ 	else
+ 		marker = makePalmMarker(id);
+ 	marker.ns = "contact_markers";
 
-	if (val > contact_cutoff) {
-		marker.scale.x = 0.004;
-		marker.scale.y = 0.004;
-		marker.scale.z = 0.005;
-		marker.color.r = 1.0;
-		marker.color.g = 0.0;
-		marker.color.b = 0.0;
-	}
-	else {
-		marker.scale.x = 0.002;
-		marker.scale.y = 0.002;
-		marker.scale.z = 0.003;
-		marker.color.r = 1.0;
-		marker.color.g = 1.0;
-		marker.color.b = 0.0;
-	}
+ 	if (val > contact_cutoff) {
+ 		marker.scale.x = radius;
+ 		marker.scale.y = radius;
+ 		marker.scale.z = height;
+ 		marker.color.r = 1.0;
+ 		marker.color.g = 0.0;
+ 		marker.color.b = 0.0;
+ 	}
+ 	else {
+ 		marker.scale.x = radius/2;
+ 		marker.scale.y = radius/2;
+ 		marker.scale.z = height-0.001;
+ 		marker.color.r = 1.0;
+ 		marker.color.g = 1.0;
+ 		marker.color.b = 0.0;
+ 	}
+ 	return marker;
+ }
 
-	return marker;
-}
 
+ visualization_msgs::Marker makePressureMarker(float val, int id, float radius, float height, bool finger)
+ {
+ 	visualization_msgs::Marker marker;
+ 	if (finger)
+ 		marker = makeFingerMarker(id);
+ 	else
+ 		marker = makePalmMarker(id);
+ 	marker.ns = "pressure_markers";
 
-visualization_msgs::Marker makePressureMarker(float val, int id)
-{
-	visualization_msgs::Marker marker = makeMarker(id);
+ 	marker.scale.x = radius;
+ 	marker.scale.y = radius*(4.0/5);
+ 	marker.scale.z = height;
 
-	marker.ns = "pressure_markers";
-
-	marker.scale.x = 0.008;
-	marker.scale.y = 0.009;
-	marker.scale.z = 0.002;
-
-	val = 0.6*(val/-400) + 0.6;
+ 	val = 0.6*(val/-400) + 0.6;
     marker.color.r = val;		// Assuming 400 is the max sensor value, that could be replaced with some MAX value
     marker.color.g = val;
     marker.color.b = 1.0;
-
     return marker;
 }
 
 
-visualization_msgs::Marker makeMarker(int id)
+visualization_msgs::Marker makeFingerMarker(int id)
 {
 	visualization_msgs::Marker marker;
 	marker.header.stamp = ros::Time();
@@ -118,12 +133,36 @@ visualization_msgs::Marker makeMarker(int id)
 
 	finger_tactile_positions(id, &marker.pose.position.x, &marker.pose.position.z);
 	marker.pose.position.y = 0;
-	marker.pose.position.y = 0;
-	marker.pose.orientation.x = 0.0;
-	marker.pose.orientation.y = 0.0;
-	marker.pose.orientation.z = 0.0;
 	marker.pose.orientation.w = 1.0;
 	marker.color.a = 1.0;
+	return marker;
+}
+
+
+visualization_msgs::Marker makePalmMarker(int id)
+{
+	float pos1[3] = {-0.043,	-0.0315, 	0.017};
+	float pos2[3] = {-0.043, 	0.0315, 	0.017};
+	float pos3[3] = {0.005,		0, 			0.017};
+	float x_gap = 0.028;
+	float y_gap = 0.004;
+	float x[11] = {pos1[0], pos1[0], pos1[0]+x_gap, pos1[0]+x_gap, pos2[0], pos2[0], pos2[0]+x_gap, pos2[0]+x_gap, pos3[0], pos3[0], pos3[0]+x_gap};
+	float y[11] = {pos1[1], pos1[1]+y_gap, pos1[1], pos1[1]+y_gap, pos2[1], pos2[1]-y_gap, pos2[1], pos2[1]-y_gap, pos3[1]-0.5*y_gap, pos3[1]+0.5*y_gap, pos3[1]};
+	float z[11] = {pos1[2], pos1[2], pos1[2], pos1[2], pos2[2], pos2[2], pos2[2], pos2[2], pos3[2], pos3[2], pos3[2]};
+
+	visualization_msgs::Marker marker;
+	marker.ns = "palm_markers";
+	marker.header.stamp = ros::Time();
+	marker.header.frame_id = "base_tactile";
+	marker.id = id + 3*sensors_per_finger;
+	marker.type = visualization_msgs::Marker::SPHERE;
+
+	marker.pose.position.x = x[id];
+	marker.pose.position.y = y[id];
+	marker.pose.position.z = z[id];
+	marker.pose.orientation.w = 1.0;
+	marker.color.a = 1.0;
+
 	return marker;
 }
 

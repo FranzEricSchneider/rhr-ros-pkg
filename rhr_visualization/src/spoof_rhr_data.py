@@ -10,7 +10,7 @@ def spoof_rhr_data():
 
     hand = Hand()
     counter = 0.0
-    rate_of_cycle = 80.0
+    rate_of_cycle = 40.0
 
     while not rospy.is_shutdown():
         sine = sin(counter/rate_of_cycle)

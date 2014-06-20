@@ -107,7 +107,6 @@ include_directories(
 # )
 
 ## Declare a cpp executable
-add_executable(rhr_publish_angles src/rhr_publish_angles.cpp)
 add_executable(hand_visualizer src/hand_visualizer.cpp)
 add_executable(tactile_visualizer src/tactile_visualizer.cpp)
 
@@ -116,7 +115,6 @@ add_executable(tactile_visualizer src/tactile_visualizer.cpp)
 # add_dependencies(using_markers_node using_markers_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(rhr_publish_angles ${catkin_LIBRARIES})
 target_link_libraries(hand_visualizer ${catkin_LIBRARIES})
 target_link_libraries(tactile_visualizer ${catkin_LIBRARIES})
 
