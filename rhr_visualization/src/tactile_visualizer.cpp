@@ -5,7 +5,7 @@
 
 int main( int argc, char** argv );
 void publish_to_rviz(const rhr_visualization::HandConstPtr& hand);
-visualization_msgs::Marker makeContactMarker(float val, int id, float radius, float height, bool finger);
+visualization_msgs::Marker makeContactMarker(bool val, int id, float radius, float height, bool finger);
 visualization_msgs::Marker makePressureMarker(float val, int id, float radius, float height, bool finger);
 visualization_msgs::Marker makeFingerMarker(int id);
 visualization_msgs::Marker makePalmMarker(int id);
@@ -22,7 +22,6 @@ int main( int argc, char** argv )
 	pub = n.advertise<visualization_msgs::MarkerArray>("visualization_marker_array", 1);
 	ros::Subscriber sub = n.subscribe("spoof_hand_data", 1, publish_to_rviz);
 
-
 	ros::spin();
 }
 
@@ -34,6 +33,7 @@ int main( int argc, char** argv )
  // void publish_to_rviz(const rhr_visualization::HandConstPtr& hand)
  void publish_to_rviz(const rhr_visualization::HandConstPtr& hand)
  {
+ 	bool contact_val;
  	float pressure_val;
  	visualization_msgs::MarkerArray marker_array;
 
@@ -46,8 +46,9 @@ int main( int argc, char** argv )
 
  		for (int i=0; i<sensors_per_finger; i++)		// Loop through tactile sensors in the fingers
  		{
+ 			contact_val = hand->finger[finger].contact[i];
  			pressure_val = hand->finger[finger].pressure[i];
- 			visualization_msgs::Marker contact_marker = makeContactMarker(pressure_val, i, 0.004, 0.005, true);
+ 			visualization_msgs::Marker contact_marker = makeContactMarker(contact_val, i, 0.004, 0.005, true);
  			visualization_msgs::Marker pressure_marker = makePressureMarker(pressure_val, i, 0.008, 0.003, true);
  			if (i < 5) {		// Proximal link
  				contact_marker.header.frame_id = prox_fid;
@@ -65,7 +66,7 @@ int main( int argc, char** argv )
 
  	for (int i=0; i<12; i++)		// Loop through tactile sensors in the palm
  	{
- 		visualization_msgs::Marker contact_marker = makeContactMarker(pressure_val, i, 0.004, 0.01, false);
+ 		visualization_msgs::Marker contact_marker = makeContactMarker(contact_val, i, 0.004, 0.01, false);
  		visualization_msgs::Marker pressure_marker = makePressureMarker(pressure_val, i, 0.009, 0.008, false);
  		marker_array.markers.push_back(contact_marker);
  		marker_array.markers.push_back(pressure_marker);
@@ -75,7 +76,7 @@ int main( int argc, char** argv )
  }
 
 
- visualization_msgs::Marker makeContactMarker(float val, int id, float radius, float height, bool finger)
+ visualization_msgs::Marker makeContactMarker(bool val, int id, float radius, float height, bool finger)
  {
  	visualization_msgs::Marker marker;
  	if (finger)
@@ -84,7 +85,7 @@ int main( int argc, char** argv )
  		marker = makePalmMarker(id);
  	marker.ns = "contact_markers";
 
- 	if (val > contact_cutoff) {
+ 	if (val) {
  		marker.scale.x = radius;
  		marker.scale.y = radius;
  		marker.scale.z = height;
