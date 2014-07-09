@@ -1,10 +1,10 @@
 #include <ros/ros.h>
-#include <rhr_visualization/Hand.h>
+#include <reflex_msgs/Hand.h>
 #include <visualization_msgs/Marker.h>
 #include <visualization_msgs/MarkerArray.h>
 
 int main( int argc, char** argv );
-void publish_to_rviz(const rhr_visualization::HandConstPtr& hand);
+void publish_to_rviz(const reflex_msgs::HandConstPtr& hand);
 visualization_msgs::Marker makeContactMarker(bool val, int id, float radius, float height, bool finger);
 visualization_msgs::Marker makePressureMarker(float val, int id, float radius, float height, bool finger);
 visualization_msgs::Marker makeFingerMarker(int id);
@@ -30,8 +30,7 @@ int main( int argc, char** argv )
  * This function takes the tactile data published by the RightHandRobotics hand
  * and sends that information in joint format to an rviz visualizer
  **/
- // void publish_to_rviz(const rhr_visualization::HandConstPtr& hand)
- void publish_to_rviz(const rhr_visualization::HandConstPtr& hand)
+ void publish_to_rviz(const reflex_msgs::HandConstPtr& hand)
  {
  	bool contact_val;
  	float pressure_val;

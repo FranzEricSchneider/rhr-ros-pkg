@@ -1,4 +1,0 @@
-# message for ReFlex Hand
-Finger[3] finger		# Hold out your right hand palm up, with pointer finger, middle finger and thumb extended
-						# Pointer = finger[0], Middle = finger[1], Thumb = finger[2]
-Palm palm

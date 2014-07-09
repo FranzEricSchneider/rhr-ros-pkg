@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import rospy
 from math import sin, pi
-from rhr_visualization.msg import Hand
+from reflex_msgs.msg import Hand
 
 def spoof_rhr_data():
     pub = rospy.Publisher('spoof_hand_data', Hand, queue_size=10)
