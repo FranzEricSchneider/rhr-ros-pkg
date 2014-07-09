@@ -28,8 +28,7 @@ def spoof_rhr_data():
             for j in range(9):                  
                 hand.finger[i].contact[j] = contact     # Finger tactile contact
                 hand.finger[i].pressure[j] = scalar     # Finger pressure scalar
-        for i in range(2):
-            hand.palm.preshape[i] = pre_ang
+        hand.palm.preshape = pre_ang
         for i in range(6):
             hand.palm.contact[i] = contact
             hand.palm.pressure[i] = scalar
