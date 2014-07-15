@@ -116,7 +116,6 @@
 <!-- ################ YOU CAN ALTER THE COLORS FROM HERE ################ -->
 <!-- ################ COMMENT OUT ALL dist*_joint PIECES OF THIS URDF SO THE FLEX JOINTS CAN LINK UP ################ -->
 <!-- ################ ################ ################ ################ ################ ################ -->
-
   <link
     name="base_link">
     <visual>
@@ -129,7 +128,7 @@
       </geometry>
       <material
         name="">
-          <xacro:base_color/>
+        <xacro:base_color/>
       </material>
     </visual>
   </link>
@@ -138,7 +137,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="${pi/2} 0 ${-pi/2}" />
+        rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://rhr_visualization/meshes/pad.STL" />
@@ -153,8 +152,8 @@
     name="pad_joint"
     type="fixed">
     <origin
-      xyz="0 0 0"
-      rpy="0 0 0" />
+      xyz="0.02 0 0.063"
+      rpy="1.5707963267949 5.55111512312578E-17 -1.5707963267949" />
     <parent
       link="base_link" />
     <child
@@ -224,8 +223,8 @@
     name="proximal_pad_1">
     <visual>
       <origin
-        xyz="-0.065 0.026 -0.083"
-        rpy="${pi/2} 0 ${-pi/2}" />
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://rhr_visualization/meshes/proximal_pad_1.STL" />
@@ -237,11 +236,11 @@
     </visual>
   </link>
   <joint
-    name="proximal_1_pad_joint"
+    name="prox1_pad_joint"
     type="fixed">
     <origin
       xyz="0 0 0"
-      rpy="0 0 0" />
+      rpy="1.5707963267949 0 -1.5707963267949" />
     <parent
       link="proximal_1" />
     <child
@@ -253,8 +252,8 @@
     name="distal_1">
     <visual>
       <origin
-        xyz="-0.13 0.026 -0.088"
-        rpy="${pi/2} 0 ${-pi/2}" />
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://rhr_visualization/meshes/distal_1.STL" />
@@ -265,11 +264,11 @@
       </material>
     </visual>
   </link>
-<!--   <joint
+  <joint
     name="distal_joint_1"
     type="continuous">
     <origin
-      xyz="0.0760000000000001 0 0.0025"
+      xyz="0.0760000000000001 0 0.00250000000000002"
       rpy="0 0 0" />
     <parent
       link="proximal_1" />
@@ -277,13 +276,13 @@
       link="distal_1" />
     <axis
       xyz="0 -1 0" />
-  </joint> -->
+  </joint>
   <link
     name="distal_pad_1">
     <visual>
       <origin
-        xyz="-0.13 0.026 -0.088"
-        rpy="${pi/2} 0 ${-pi/2}" />
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://rhr_visualization/meshes/distal_pad_1.STL" />
@@ -295,11 +294,11 @@
     </visual>
   </link>
   <joint
-    name="distal_1_pad_joint"
+    name="dist1_pad_joint"
     type="fixed">
     <origin
-      xyz="0 0 0"
-      rpy="0 0 0" />
+      xyz="-0.0760000000000001 0 -0.0025"
+      rpy="1.5707963267949 0 -1.5707963267949" />
     <parent
       link="distal_1" />
     <child
@@ -369,8 +368,8 @@
     name="proximal_pad_2">
     <visual>
       <origin
-        xyz="-0.065 -0.026 -0.083"
-        rpy="${pi/2} 0 ${-pi/2}" />
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://rhr_visualization/meshes/proximal_pad_2.STL" />
@@ -382,11 +381,11 @@
     </visual>
   </link>
   <joint
-    name="proximal_2_pad_joint"
+    name="prox2_pad_joint"
     type="fixed">
     <origin
       xyz="0 0 0"
-      rpy="0 0 0" />
+      rpy="1.5707963267949 0 -1.5707963267949" />
     <parent
       link="proximal_2" />
     <child
@@ -398,8 +397,8 @@
     name="distal_2">
     <visual>
       <origin
-        xyz="-0.13 -0.026 -0.088"
-        rpy="${pi/2} 0 ${-pi/2}" />
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://rhr_visualization/meshes/distal_2.STL" />
@@ -410,11 +409,11 @@
       </material>
     </visual>
   </link>
-<!--   <joint
+  <joint
     name="distal_joint_2"
     type="continuous">
     <origin
-      xyz="0.076 0 0.0025"
+      xyz="0.0760000000000001 0 0.00249999999999997"
       rpy="0 0 0" />
     <parent
       link="proximal_2" />
@@ -422,13 +421,13 @@
       link="distal_2" />
     <axis
       xyz="0 -1 0" />
-  </joint> -->
+  </joint>
   <link
     name="distal_pad_2">
     <visual>
       <origin
-        xyz="-0.13 -0.026 -0.088"
-        rpy="${pi/2} 0 ${-pi/2}" />
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://rhr_visualization/meshes/distal_pad_2.STL" />
@@ -440,11 +439,11 @@
     </visual>
   </link>
   <joint
-    name="distal_2_pad_joint"
+    name="dist2_pad_joint"
     type="fixed">
     <origin
-      xyz="0 0 0"
-      rpy="0 0 0" />
+      xyz="-0.0760000000000001 0 -0.0025"
+      rpy="1.5707963267949 0 -1.5707963267949" />
     <parent
       link="distal_2" />
     <child
@@ -472,7 +471,7 @@
     name="proximal_joint_3"
     type="continuous">
     <origin
-      xyz="-0.03 0 0.0816000000000001"
+      xyz="-0.0299999999999996 0 0.0816000000000002"
       rpy="-5.55111512312578E-17 -2.22044604925031E-16 3.14159265358979" />
     <parent
       link="base_link" />
@@ -485,8 +484,8 @@
     name="proximal_pad_3">
     <visual>
       <origin
-        xyz="-0.033 0 -0.083"
-        rpy="${pi/2} 0 ${pi/2}" />
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://rhr_visualization/meshes/proximal_pad_3.STL" />
@@ -498,24 +497,24 @@
     </visual>
   </link>
   <joint
-    name="proximal_3_pad_joint"
+    name="prox3_pad_joint"
     type="fixed">
     <origin
       xyz="0 0 0"
-      rpy="-8.12078539014657E-108 0 0" />
+      rpy="1.5707963267949 1.22460635382238E-16 -1.5707963267949" />
     <parent
       link="proximal_3" />
     <child
       link="proximal_pad_3" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 0 0" />
   </joint>
   <link
     name="distal_3">
     <visual>
       <origin
-        xyz="-0.1 0 -0.088"
-        rpy="${pi/2} 0 ${pi/2}" />
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://rhr_visualization/meshes/distal_3.STL" />
@@ -526,25 +525,25 @@
       </material>
     </visual>
   </link>
-<!--   <joint
+  <joint
     name="distal_joint_3"
     type="continuous">
     <origin
       xyz="0.0760000000000001 0 0.0025"
-      rpy="0 0 0" />
+      rpy="-1.48887961834512E-45 -1.0995850059156E-76 -7.38531841236285E-32" />
     <parent
       link="proximal_3" />
     <child
       link="distal_3" />
     <axis
       xyz="0 -1 0" />
-  </joint> -->
+  </joint>
   <link
     name="distal_pad_3">
     <visual>
       <origin
-        xyz="-0.1 0 -0.088"
-        rpy="${pi/2} 0 ${pi/2}" />
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://rhr_visualization/meshes/distal_pad_3.STL" />
@@ -556,11 +555,11 @@
     </visual>
   </link>
   <joint
-    name="distal_3_pad_joint"
+    name="dist3_pad_joint"
     type="fixed">
     <origin
-      xyz="0 0 0"
-      rpy="0 0 0" />
+      xyz="-0.0760000000000001 0 -0.0025"
+      rpy="1.5707963267949 -1.22460635382238E-16 -1.5707963267949" />
     <parent
       link="distal_3" />
     <child
