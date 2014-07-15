@@ -39,9 +39,9 @@ int main( int argc, char** argv )
  	for (int finger=0; finger<3; finger++)
  	{
  		char prox_fid[20];
- 		sprintf(prox_fid, "/prox%d_tactile", (finger+1));
+ 		sprintf(prox_fid, "/proximal_%d_tactile", (finger+1));
  		char dist_fid[20];
- 		sprintf(dist_fid, "/dist%d_tactile", (finger+1));
+ 		sprintf(dist_fid, "/distal_%d_tactile", (finger+1));
 
  		for (int i=0; i<sensors_per_finger; i++)		// Loop through tactile sensors in the fingers
  		{
@@ -63,7 +63,7 @@ int main( int argc, char** argv )
  		}
  	}
 
- 	for (int i=0; i<12; i++)		// Loop through tactile sensors in the palm
+ 	for (int i=0; i<11; i++)		// Loop through tactile sensors in the palm
  	{
  		visualization_msgs::Marker contact_marker = makeContactMarker(contact_val, i, 0.004, 0.01, false);
  		visualization_msgs::Marker pressure_marker = makePressureMarker(pressure_val, i, 0.009, 0.008, false);
@@ -141,9 +141,9 @@ visualization_msgs::Marker makeFingerMarker(int id)
 
 visualization_msgs::Marker makePalmMarker(int id)
 {
-	float pos1[3] = {-0.043,	-0.0315, 	0.017};
-	float pos2[3] = {-0.043, 	0.0315, 	0.017};
-	float pos3[3] = {0.005,		0, 			0.017};
+	float pos1[3] = {-0.0235,	-0.0315, 	0.08};
+	float pos2[3] = {-0.0235, 	0.0315, 	0.08};
+	float pos3[3] = {0.026,		0, 			0.08};
 	float x_gap = 0.028;
 	float y_gap = 0.004;
 	float x[11] = {pos1[0], pos1[0], pos1[0]+x_gap, pos1[0]+x_gap, pos2[0], pos2[0], pos2[0]+x_gap, pos2[0]+x_gap, pos3[0], pos3[0], pos3[0]+x_gap};
@@ -171,11 +171,11 @@ void finger_tactile_positions(int index, double* x, double* z)
 {
 	double x_gap = 0.008;
 	if (index < 5) {	// Proximal link
-		*x = x_gap*index + 0.018;
-		*z = 0.0145;
+		*x = x_gap*index + 0.016;
+		*z = 0.0125;
 	}
 	else {				// Distal link
-		*x = x_gap*(index-5) + 0.022;
-		*z = 0.009;
+		*x = x_gap*(index-5) + 0.015;
+		*z = 0.007;
 	}
 }

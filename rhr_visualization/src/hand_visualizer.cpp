@@ -17,8 +17,8 @@ int num_flex_steps = 9;
  void publish_to_rviz(const reflex_msgs::HandConstPtr& hand)
  {
   joint_state.header.stamp = ros::Time::now();
-  joint_state.position[0] = -hand->finger[0].proximal;
-  joint_state.position[1] = -hand->finger[1].proximal;
+  joint_state.position[0] = hand->finger[0].proximal;
+  joint_state.position[1] = hand->finger[1].proximal;
   joint_state.position[2] = hand->finger[2].proximal;
   joint_state.position[3] = hand->palm.preshape;
   joint_state.position[4] = -hand->palm.preshape;
@@ -44,11 +44,11 @@ int main(int argc, char **argv)
     ROS_INFO("Number to resize: %d", num_fixed_steps + 3*(num_flex_steps+1));
   joint_state.name.resize(num_fixed_steps + 3*(num_flex_steps+1));
   joint_state.position.resize(num_fixed_steps + 3*(num_flex_steps+1));
-  joint_state.name[0] ="prox1_joint";
-  joint_state.name[1] ="prox2_joint";
-  joint_state.name[2] ="prox3_joint";
-  joint_state.name[3] ="pre1_joint";
-  joint_state.name[4] ="pre2_joint";
+  joint_state.name[0] ="proximal_joint_1";
+  joint_state.name[1] ="proximal_joint_2";
+  joint_state.name[2] ="proximal_joint_3";
+  joint_state.name[3] ="preshape_1";
+  joint_state.name[4] ="preshape_2";
 
   char buffer[50];
   int index = num_fixed_steps;

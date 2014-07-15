@@ -6,8 +6,9 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /MarkerArray1
-      Splitter Ratio: 0.5
+        - /Grid1
+        - /MarkerArray1/Namespaces1
+      Splitter Ratio: 0.550336
     Tree Height: 601
   - Class: rviz/Selection
     Name: Selection
@@ -32,7 +33,7 @@ Visualization Manager:
   Class: ""
   Displays:
     - Alpha: 0.5
-      Cell Size: 1
+      Cell Size: 0.01
       Class: rviz/Grid
       Color: 160; 160; 164
       Enabled: true
@@ -46,7 +47,7 @@ Visualization Manager:
         Y: 0
         Z: 0
       Plane: XY
-      Plane Cell Count: 10
+      Plane Cell Count: 40
       Reference Frame: <Fixed Frame>
       Value: true
     - Alpha: 1
@@ -64,29 +65,48 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        dist1_tactile:
+        base_tactile:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        dist2_tactile:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        dist3_tactile:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        distal1:
+        distal_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        distal2:
+        distal_1_tactile:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        distal_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        distal3:
+        distal_2_tactile:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        distal_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        distal_3_tactile:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        distal_pad_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        distal_pad_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        distal_pad_3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -121,6 +141,21 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        finger[1]/flex_link[7]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[1]/flex_link[8]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[1]/flex_link[9]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         finger[2]/flex_link[1]:
           Alpha: 1
           Show Axes: false
@@ -147,6 +182,21 @@ Visualization Manager:
           Show Trail: false
           Value: true
         finger[2]/flex_link[6]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[2]/flex_link[7]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[2]/flex_link[8]:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        finger[2]/flex_link[9]:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -181,39 +231,74 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        prox1_tactile:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        prox2_tactile:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        prox3_tactile:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        proximal1:
+        finger[3]/flex_link[7]:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        proximal2:
+        finger[3]/flex_link[8]:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        proximal3:
+        finger[3]/flex_link[9]:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        swivel1:
+        pad:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        swivel2:
+        proximal_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        proximal_1_tactile:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        proximal_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        proximal_2_tactile:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        proximal_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        proximal_3_tactile:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        proximal_pad_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        proximal_pad_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        proximal_pad_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swivel_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swivel_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -229,11 +314,11 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-      Marker Scale: 1
+      Marker Scale: 0.1
       Name: TF
       Show Arrows: true
       Show Axes: true
-      Show Names: true
+      Show Names: false
       Tree:
         {}
       Update Interval: 0
@@ -271,22 +356,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.345035
+      Distance: 0.451315
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: -0.0206184
+        Y: -0.0312154
+        Z: 0.108228
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.465398
+      Pitch: 0.829797
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.885398
+      Yaw: 3.86041
     Saved: ~
 Window Geometry:
   Displays:
