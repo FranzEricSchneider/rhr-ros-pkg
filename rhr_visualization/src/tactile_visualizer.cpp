@@ -171,11 +171,11 @@ void finger_tactile_positions(int index, double* x, double* z)
 {
 	double x_gap = 0.008;
 	if (index < 5) {	// Proximal link
-		*x = x_gap*index + 0.016;
+		*x = x_gap*index + 0.017;
 		*z = 0.0125;
 	}
 	else {				// Distal link
-		*x = x_gap*(index-5) + 0.015;
+		*x = x_gap*(index-5) + 0.018;
 		*z = 0.007;
 	}
 }

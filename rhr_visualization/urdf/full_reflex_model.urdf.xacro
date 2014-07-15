@@ -252,7 +252,7 @@
     name="distal_1">
     <visual>
       <origin
-        xyz="0 0 0"
+        xyz="0.01 0 -0.004"
         rpy="0 0 0" />
       <geometry>
         <mesh
@@ -281,7 +281,7 @@
     name="distal_pad_1">
     <visual>
       <origin
-        xyz="0 0 0"
+        xyz="0 -0.004 -0.01"
         rpy="0 0 0" />
       <geometry>
         <mesh
@@ -397,7 +397,7 @@
     name="distal_2">
     <visual>
       <origin
-        xyz="0 0 0"
+        xyz="0.01 0 -0.004"
         rpy="0 0 0" />
       <geometry>
         <mesh
@@ -426,7 +426,7 @@
     name="distal_pad_2">
     <visual>
       <origin
-        xyz="0 0 0"
+        xyz="0 -0.004 -0.01"
         rpy="0 0 0" />
       <geometry>
         <mesh
@@ -513,7 +513,7 @@
     name="distal_3">
     <visual>
       <origin
-        xyz="0 0 0"
+        xyz="0.01 0 -0.004"
         rpy="0 0 0" />
       <geometry>
         <mesh
@@ -542,7 +542,7 @@
     name="distal_pad_3">
     <visual>
       <origin
-        xyz="0 0 0"
+        xyz="0 -0.004 -0.01"
         rpy="0 0 0" />
       <geometry>
         <mesh
