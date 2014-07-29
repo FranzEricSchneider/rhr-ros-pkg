@@ -1,0 +1,4 @@
+<launch>
+	<!-- <node name="labjack" pkg="rhr_testbench" type="labjack_publisher.py" output="screen"/> -->
+	<node name="finger_tracker" pkg="rhr_testbench" type="finger_pull_tracker" output="screen"/>
+</launch>

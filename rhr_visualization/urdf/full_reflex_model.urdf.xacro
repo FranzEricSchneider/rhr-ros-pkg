@@ -13,27 +13,27 @@
 	<xacro:property name="pi" value="3.1415" />
 
  	<xacro:macro name="base_color">
- 		<color rgba="0.22 0.22 0.22 1"/>
+ 		<color rgba="0.22 0.22 0.22 0.9"/>
  	</xacro:macro>
 
  	<xacro:macro name="swivel_color">
- 		<color rgba="0.22 0.22 0.22 1"/>
+ 		<color rgba="0.22 0.22 0.22 0.9"/>
  	</xacro:macro>
 
  	<xacro:macro name="proximal_color">
- 		<color rgba="0.35 0.35 0.35 1"/>
+ 		<color rgba="0.35 0.35 0.35 0.9"/>
  	</xacro:macro>
 
  	 <xacro:macro name="distal_color">
- 		<color rgba="0.35 0.35 0.35 1"/>
+ 		<color rgba="0.35 0.35 0.35 0.9"/>
  	</xacro:macro>
 
  	<xacro:macro name="flex_color">
- 		<color rgba="0.2 0.2 .2 1"/>
+ 		<color rgba="0.2 0.2 .2 0.9"/>
  	</xacro:macro>
 
   <xacro:macro name="pad_color">
-    <color rgba="0.686 0.0706 0.8039 0.4"/>
+    <color rgba="0.686 0.0706 0.8039 0.5"/>
   </xacro:macro>  
 
 	<!-- Macro to make each park of the link -->
