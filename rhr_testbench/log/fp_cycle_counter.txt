@@ -1,0 +1,4 @@
+
+25 cycles completed, they took 30.0781 seconds
+25 cycles completed, they took 30.0824 seconds
+26 cycles completed, they took 31.8664 seconds

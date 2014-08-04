@@ -1,2 +1,0 @@
-Cycle number 1 was completed after -17.285714389seconds 
-Cycle number 2 was completed after -32.021244203seconds 
