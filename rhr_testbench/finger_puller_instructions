@@ -1,0 +1,8 @@
+Assuming this code is already on your computer and runs
+
+1) Plug the Labjack into the computer
+2) There should be an evenly split voltage divider between power and ground, with a probe going to AIN0 touching the center of the voltage divider. AIN0 should read 2.5V when the finger wire survives.
+3) roslaunch rhr_testbench finger_puller.launch
+4) You'll be asked if the finger is new or if its already done cycles. If you tell it 'n' (no, it's not new) it will first check in the rhr_testbench/log directory for the last cycle count. If it doesn't find any log files, it will ask you for how many cycles have already been run. Tell it.
+5) Connect the motor to 8V power. If you use a differenct power supply, change the cycle_hz value in finger_pulleR_tracker.cpp
+6) Now every 4 seconds the cycle counter log file should update, and if the finger wire ever should break a log file should note roughly how many cycles it took to break.
