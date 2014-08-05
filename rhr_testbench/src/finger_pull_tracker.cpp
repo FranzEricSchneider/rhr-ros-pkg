@@ -26,6 +26,7 @@ bool connected = true;
 bool ever_failed = false;
 
 float start_time;
+int cycle_start;
 int cycle_counter = 0;
 float cycle_hz = 20/24.0;		// When timed, it took approx. 24 seconds to complete 20 cycles
 ofstream cycle_file;
@@ -135,7 +136,7 @@ int read_past_cycles(string address) {
 
 void cycle_done() {
 	float elapsed = ros::Time::now().toSec() - start_time;
-	cycle_counter = cycle_hz * elapsed;
+	cycle_counter = cycle_start + cycle_hz * elapsed;
 	ROS_INFO("The test is at %d cycles. Is wire still connected: %d", cycle_counter, connected);
 	cycle_file << '\n' << cycle_counter << " cycles completed, they took " << elapsed << " seconds";
 }
@@ -150,11 +151,10 @@ int main(int argc, char **argv){
 	string cycle_file_address = "/home/eon-alone/ros/src/rhr-ros-pkg/rhr_testbench/log/fp_cycle_counter.txt";
 	string fail_file_address = "/home/eon-alone/ros/src/rhr-ros-pkg/rhr_testbench/log/fp_connection_failed.txt";
 	
-	cycle_counter = determine_previous_cycles(cycle_file_address, fail_file_address, cycle_counter);
+	cycle_start = determine_previous_cycles(cycle_file_address, fail_file_address, cycle_counter);
 
 	cycle_file.open(cycle_file_address.c_str(), ios::out|ios::trunc);
 	fail_file.open(fail_file_address.c_str(), ios::out|ios::trunc);
-	cycle_counter--;
 	cycle_done();	// This preserves the previous cycle count if the run is stopped before any cycles happen
 
 	// ros::Subscriber cycle_sub = n.subscribe("/is_blocked_1", 20, blocked_callback);
