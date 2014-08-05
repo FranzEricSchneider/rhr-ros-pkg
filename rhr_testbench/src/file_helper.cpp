@@ -7,8 +7,8 @@ by various rhr_testbench applications
 #include <fstream>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string>
-using namespace std;
+
+#include "file_helper.h"
 
 
 // Extracts the last line of a file indicated by address, then tries to interpret the first word on that line as an integer
