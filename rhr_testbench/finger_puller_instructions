@@ -1,4 +1,5 @@
-Assuming this code is already on your computer and runs
+Assuming this code is already on your computer and runs.
+CAD can be found at RightHand_Eric/CAD/Testing Apparatus/Finger puller/
 
 1) Plug the Labjack into the computer
 2) There should be an evenly split voltage divider between power and ground, with a probe going to AIN0 touching the center of the voltage divider. AIN0 should read 2.5V when the finger wire survives.
