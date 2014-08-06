@@ -113,11 +113,11 @@ int main(int argc, char **argv) {
 	cycleFile.open("/home/eon-alone/ros/src/rhr-ros-pkg/rhr_testbench/log/hys_cycleCounter.txt", std::ios::out|std::ios::trunc);
 	falltimeFile.open("/home/eon-alone/ros/src/rhr-ros-pkg/rhr_testbench/log/hys_falltime.txt", std::ios::out|std::ios::trunc);
 
-	ros::Publisher sensor_max_pub = n.advertise<std_msgs::Float>("sensor_max", 1000);
-	ros::Publisher sensor_min_pub = n.advertise<std_msgs::Float>("sensor_min", 1000);
-	ros::Publisher falltime_pub = n.advertise<std_msgs::Float>("falltime", 1000);
+	ros::Publisher sensor_max_pub = n.advertise<std_msgs::Float>("/sensor_max", 1000);
+	ros::Publisher sensor_min_pub = n.advertise<std_msgs::Float>("/sensor_min", 1000);
+	ros::Publisher falltime_pub = n.advertise<std_msgs::Float>("/falltime", 1000);
 
-	ros::Subscriber cycle_sub = n.subscribe("/is_blocked_2", 20, blocked_callback);
+	ros::Subscriber cycle_sub = n.subscribe("/is_blocked", 20, blocked_callback);
 	// ros::Subscriber tactile_sub = n.subscribe("/tactile", 20, tactile_callback);		// Subscribe to tactile data
 
 

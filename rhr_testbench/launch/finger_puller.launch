@@ -1,9 +1,7 @@
 <launch>
-	<!-- This means the finger puller motor photogate is measured on AIN1 -->
-	<param name="cycle_AIN" type="int" value="1"/>
 	<!-- This means for the finger pull test connectivity should be tracked -->
 	<param name="track_connectivity" type="bool" value="true"/>
-	<param name="labjack_rate" type="int" value="100"/>
+	<param name="labjack_rate" type="int" value="10"/>
 
 	<node name="labjack" pkg="rhr_testbench" type="labjack_publisher.py"/>
 	<node name="finger_tracker" pkg="rhr_testbench" type="finger_pull_tracker" output="screen"/>
