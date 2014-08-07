@@ -110,13 +110,9 @@ add_executable(finger_pull_tracker src/finger_pull_tracker.cpp)
 # add_dependencies(rhr_testbench_node rhr_testbench_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-<<<<<<< HEAD
-target_link_libraries(finger_pull_tracker rhr_testbench_lib ${catkin_LIBRARIES})
-=======
-target_link_libraries(finger_pull_tracker file_helper ${catkin_LIBRARIES})
-# target_link_libraries(hysteresis_tracker ${catkin_LIBRARIES})
 
->>>>>>> f3ccc19b37ff1563ce162f7b39f0bce817d0d5cc
+target_link_libraries(finger_pull_tracker ${catkin_LIBRARIES})
+# target_link_libraries(hysteresis_tracker ${catkin_LIBRARIES})
 
 #############
 ## Install ##
