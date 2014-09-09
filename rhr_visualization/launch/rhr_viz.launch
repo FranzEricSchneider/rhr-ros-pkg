@@ -1,9 +1,8 @@
+<!-- Launches the RightHand Robotics visualizer, which reads data on the /reflex_hand topic -->
 <launch>
 	<param name="robot_description" command="$(find xacro)/xacro.py '$(find rhr_visualization)/urdf/full_reflex_model.urdf.xacro'" />
 
-	<node name="spoof_rhr_data" pkg="rhr_visualization" type="spoof_rhr_data.py"/>
-	<node name="hand_visualizer" pkg="rhr_visualization" type="hand_visualizer"/>
-	<node name="tactile_visualizer" pkg="rhr_visualization" type="tactile_visualizer"/>
+	<node name="hand_visualizer" pkg="rhr_visualization" type="hand_visualizer" output="screen"/>
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find rhr_visualization)/urdf.rviz" required="true" />
 </launch>

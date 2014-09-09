@@ -4,8 +4,8 @@ from math import sin, pi
 from reflex_msgs.msg import Hand
 
 def spoof_rhr_data():
-    pub = rospy.Publisher('spoof_hand_data', Hand, queue_size=10)
-    rospy.init_node('spoof_rhr_data', anonymous=True)
+    pub = rospy.Publisher('/reflex_hand', Hand, queue_size=10)
+    rospy.init_node('spoof_reflex_hand', anonymous=True)
     r = rospy.Rate(50)
 
     hand = Hand()
